@@ -4,15 +4,22 @@ import com.projects.servermanager.enumeration.Status;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
+
+import static javax.persistence.GenerationType.AUTO;
 
 
 @Entity
 public class Server {
     @Id
+    @GeneratedValue(strategy = AUTO)
     @Column(name = "serverId", nullable = false)
     private Long serverId;
+    @Column(unique = true)
+    @NotEmpty(message = "IP Address cannot be empty or null")
     private String ipAddress;
     private String name;
     private String memory;
