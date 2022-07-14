@@ -7,6 +7,8 @@ import java.util.Collection;
 public interface ServerService {
     Server createServer(Server server);
 
+    Server pingAServer(String ipAddress);
+
     Collection<Server> listOfServerInLimit(int limit);
 
     Server getServerById(Long id);
