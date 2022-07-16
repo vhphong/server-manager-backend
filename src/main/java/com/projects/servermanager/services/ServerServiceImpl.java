@@ -13,7 +13,7 @@ public class ServerServiceImpl implements ServerService{
 
 
     @Override
-    public Server pingAServer(String ipAddress) {
+    public Server pingServer(String ipAddress) {
         return null;
     }
 
