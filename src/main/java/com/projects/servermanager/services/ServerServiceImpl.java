@@ -1,14 +1,32 @@
 package com.projects.servermanager.services;
 
 import com.projects.servermanager.models.Server;
+import com.projects.servermanager.repositories.ServerRepo;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.logging.Logger;
 
-public class ServerServiceImpl implements ServerService{
+@Service
+@Transactional
+public class ServerServiceImpl implements ServerService {
+
+    private final ServerRepo serverRepo;
+
+    Logger logger = Logger.getLogger("Information logging");
+
+
+    public ServerServiceImpl(ServerRepo serverRepo) {
+        this.serverRepo = serverRepo;
+    }
+
 
     @Override
     public Server createServer(Server server) {
-        return null;
+        logger.info("Saving new server: " + server.getName());
+        server.setImageUrl(setServerImageUrl());
+        return serverRepo.save(server);
     }
 
 
@@ -41,4 +59,8 @@ public class ServerServiceImpl implements ServerService{
         return null;
     }
 
+
+    public String setServerImageUrl() {
+        return null;
+    }
 }
